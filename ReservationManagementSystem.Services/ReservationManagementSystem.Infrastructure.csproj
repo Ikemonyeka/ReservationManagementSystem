@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReservationManagementSystem.Models\ReservationManagementSystem.Models.csproj" />
+    <ProjectReference Include="..\ReservationManagementSystem.Models\ReservationManagementSystem.Core.csproj" />
   </ItemGroup>
 
 </Project>
