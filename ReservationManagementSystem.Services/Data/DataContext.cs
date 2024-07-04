@@ -15,6 +15,6 @@ namespace ReservationManagementSystem.Services.Data
                 
         }
 
-        DbSet<User> Users {  get; set; }
+        public DbSet<User> Users {  get; set; }
     }
 }

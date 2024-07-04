@@ -1,4 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using ReservationManagementSystem.Application.Repositories;
+using ReservationManagementSystem.Application.Repositories.Interface;
+using ReservationManagementSystem.Application.Services;
+using ReservationManagementSystem.Application.Services.Interface;
 using ReservationManagementSystem.Services.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +18,10 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
 
 var app = builder.Build();
 

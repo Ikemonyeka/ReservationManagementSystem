@@ -21,10 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\ReservationManagementSystem.Application\ReservationManagementSystem.Application.csproj" />
     <ProjectReference Include="..\ReservationManagementSystem.Services\ReservationManagementSystem.Infrastructure.csproj" />
   </ItemGroup>
 
