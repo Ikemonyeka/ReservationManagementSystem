@@ -20,7 +20,7 @@ namespace ReservationManagementSystem.Application.Services
         {
             _configuration = configuration;
         }
-        public async Task VerifcationEmail(string email)
+        public async Task VerifcationEmail(string email, string token)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace ReservationManagementSystem.Application.Services
                 string HtmlBody = "";
                 StreamReader reader = new StreamReader(Template);
                 HtmlBody = reader.ReadToEnd();
-                HtmlBody = HtmlBody.Replace("{Link}", string.Format(Hosturl + Curl, email));
+                HtmlBody = HtmlBody.Replace("{Link}", string.Format(Hosturl + Curl, email, token));
 
                 var mail = new MimeMessage();
                 mail.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailDetails:DefaultEmail").Value));

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReservationManagementSystem.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace ReservationManagementSystem.Models.Entities
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public DateTime? DateUpdated { get; set; } = DateTime.Now;
         public DateTime? LastLogin { get; set; } = DateTime.Now;
+        public string? VerificationToken { get; set; }
         public bool IsVerified { get; set; } = false;
     }
 }

@@ -8,6 +8,6 @@ namespace ReservationManagementSystem.Application.Services.Interface
 {
     public interface IEmailService
     {
-        Task VerifcationEmail(string email);
+        Task VerifcationEmail(string email, string token);
     }
 }

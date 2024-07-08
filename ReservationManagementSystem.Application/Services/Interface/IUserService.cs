@@ -10,5 +10,7 @@ namespace ReservationManagementSystem.Application.Services.Interface
     public interface IUserService
     {
         Task<ResponseViewModel> SignUp(SignUpViewModel signUp);
+        Task<ResponseViewModel> VerifyUser(string email, string token);
+        Task<ResponseViewModel> SignIn(SignInViewModel signIn);
     }
 }
