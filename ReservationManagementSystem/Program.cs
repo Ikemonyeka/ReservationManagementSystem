@@ -5,6 +5,7 @@ using ReservationManagementSystem.Application.Repositories;
 using ReservationManagementSystem.Application.Repositories.Interface;
 using ReservationManagementSystem.Application.Services;
 using ReservationManagementSystem.Application.Services.Interface;
+using ReservationManagementSystem.Infrastructure;
 using ReservationManagementSystem.Services.Data;
 using Serilog;
 using System.Text;
@@ -61,5 +62,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.RestuarantSeed();
 
 app.Run();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReservationManagementSystem.Core.Entities;
 using ReservationManagementSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,8 @@ namespace ReservationManagementSystem.Services.Data
         }
 
         public DbSet<User> Users {  get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<ReservationAvailability> ReservationsAvailability { get; set; }
+        public DbSet<Restuarant> Restuarants { get; set; }
     }
 }
