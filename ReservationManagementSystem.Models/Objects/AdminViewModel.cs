@@ -14,10 +14,20 @@ namespace ReservationManagementSystem.Core.Objects
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
-        public string Role { get; set; }
-        public string? PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string? VerificationToken { get; set; }
-        public DateTime DateCreated { get; set; } = DateTime.Now;
+        public string PhoneNumber { get; set; }
+        public int RestuarantId { get; set; }   
+    }
+
+    public class AdminLoginViewModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class AdminClaims
+    {
+        public int userId { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
     }
 }

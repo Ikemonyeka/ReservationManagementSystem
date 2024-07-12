@@ -105,7 +105,7 @@ namespace ReservationManagementSystem.Application.Services
 
                 signUp.VerificationToken = VerficationGen();
                 await _userRepository.CreateUser(signUp);
-                await _emailService.VerifcationEmail(signUp.Email, signUp.VerificationToken);
+                await _emailService.UserVerifcationEmail(signUp.Email, signUp.VerificationToken);
 
                 response.message = "User Created Successfully";
                 response.status = true;

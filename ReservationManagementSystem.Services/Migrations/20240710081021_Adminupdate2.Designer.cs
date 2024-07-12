@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReservationManagementSystem.Services.Data;
 
@@ -11,9 +12,11 @@ using ReservationManagementSystem.Services.Data;
 namespace ReservationManagementSystem.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240710081021_Adminupdate2")]
+    partial class Adminupdate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace ReservationManagementSystem.Services.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestuarantId")
+                    b.Property<int>("RestuarantId")
                         .HasColumnType("int");
 
                     b.Property<int>("Role")
@@ -79,10 +82,9 @@ namespace ReservationManagementSystem.Services.Migrations
                     b.HasKey("AdminId");
 
                     b.HasIndex("RestuarantId")
-                        .IsUnique()
-                        .HasFilter("[RestuarantId] IS NOT NULL");
+                        .IsUnique();
 
-                    b.ToTable("Admins", (string)null);
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.ReservationAvailability", b =>
@@ -106,7 +108,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasIndex("RestuarantId");
 
-                    b.ToTable("ReservationsAvailability", (string)null);
+                    b.ToTable("ReservationsAvailability");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Restuarant", b =>
@@ -163,7 +165,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restuarants", (string)null);
+                    b.ToTable("Restuarants");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Models.Entities.User", b =>
@@ -221,14 +223,16 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Admin", b =>
                 {
                     b.HasOne("ReservationManagementSystem.Core.Entities.Restuarant", "Restuarant")
                         .WithOne("Admin")
-                        .HasForeignKey("ReservationManagementSystem.Core.Entities.Admin", "RestuarantId");
+                        .HasForeignKey("ReservationManagementSystem.Core.Entities.Admin", "RestuarantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Restuarant");
                 });

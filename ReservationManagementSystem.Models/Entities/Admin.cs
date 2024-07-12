@@ -17,11 +17,11 @@ namespace ReservationManagementSystem.Core.Entities
         public string PhoneNumber { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public string Role { get; set; }
+        public int Role { get; set; }
         public DateTime DateCreadted { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool IsVerified { get; set; }
-        public TimeOnly? Duration { get; set; }
+        public string? VerificationToken { get; set; }
         public int RestuarantId { get; set; }
         public virtual Restuarant Restuarant { get; set; }
     }
