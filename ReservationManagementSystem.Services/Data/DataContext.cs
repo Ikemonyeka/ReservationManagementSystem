@@ -20,5 +20,6 @@ namespace ReservationManagementSystem.Services.Data
         public DbSet<Admin> Admins { get; set; }
         public DbSet<ReservationAvailability> ReservationsAvailability { get; set; }
         public DbSet<Restuarant> Restuarants { get; set; }
+        public DbSet<Table> Tables { get; set; }
     }
 }

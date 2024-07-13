@@ -71,7 +71,7 @@ namespace ReservationManagementSystem.Application.Repositories
         {
             try
             {
-                string sql = $"Select AdminId, FirstName, LastName, Username, Email, PasswordHash, PasswordSalt, Role from Admins where username = @username and IsVerified = 1";
+                string sql = $"Select AdminId, FirstName, LastName, Username, Email, PasswordHash, PasswordSalt, Role, RestuarantId from Admins where username = @username and IsVerified = 1";
 
                 using (IDbConnection con = new SqlConnection(SqlConn))
                 {

@@ -25,5 +25,6 @@ namespace ReservationManagementSystem.Core.Entities
         public DateTime? DateUpdated { get; set; }
         public virtual List<ReservationAvailability> ReservationAvailabilities { get; set; }
         public virtual Admin Admin { get; set; }
+        public virtual List<Table> Tables { get; set; }
     }
 }

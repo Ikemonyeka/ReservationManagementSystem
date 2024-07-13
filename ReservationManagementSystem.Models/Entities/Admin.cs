@@ -22,7 +22,7 @@ namespace ReservationManagementSystem.Core.Entities
         public DateTime? LastLogin { get; set; }
         public bool IsVerified { get; set; }
         public string? VerificationToken { get; set; }
-        public int RestuarantId { get; set; }
+        public int? RestuarantId { get; set; }
         public virtual Restuarant Restuarant { get; set; }
     }
 }

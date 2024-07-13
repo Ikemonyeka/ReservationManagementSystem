@@ -61,6 +61,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<ITableService, TableService>();
+builder.Services.AddScoped<ITableRepository, TableRepository>();
 
 builder.Services.AddHttpContextAccessor();
 
