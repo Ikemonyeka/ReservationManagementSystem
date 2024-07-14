@@ -26,7 +26,7 @@ namespace ReservationManagementSystem.Application.Repositories
         {
             try
             {
-                await _context.AddAsync(table);
+                await _context.Tables.AddAsync(table);
                 _context.SaveChanges();
                 return new ResponseViewModel { message = "Table added", status = true, data = "no data available"};
             }
