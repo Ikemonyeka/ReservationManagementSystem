@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReservationManagementSystem.Services.Data;
 
@@ -11,9 +12,11 @@ using ReservationManagementSystem.Services.Data;
 namespace ReservationManagementSystem.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240714161905_TimeSlot")]
+    partial class TimeSlot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +85,7 @@ namespace ReservationManagementSystem.Services.Migrations
                         .IsUnique()
                         .HasFilter("[RestuarantId] IS NOT NULL");
 
-                    b.ToTable("Admins", (string)null);
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.ReservationTimeSlot", b =>
@@ -106,7 +109,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasIndex("RestuarantId");
 
-                    b.ToTable("ReservationTimeSlots", (string)null);
+                    b.ToTable("ReservationTimeSlots");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Restuarant", b =>
@@ -163,7 +166,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restuarants", (string)null);
+                    b.ToTable("Restuarants");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Table", b =>
@@ -191,7 +194,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasIndex("RestuarantId");
 
-                    b.ToTable("Tables", (string)null);
+                    b.ToTable("Tables");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Models.Entities.User", b =>
@@ -249,7 +252,7 @@ namespace ReservationManagementSystem.Services.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Admin", b =>
