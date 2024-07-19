@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ReservationManagementSystem.Application.Services.Interface
 {
-    public interface IEmailService
+    public interface IReservationService
     {
-        Task UserVerifcationEmail(string email, string token);
-        Task AdminVerifcationEmail(string email, string token);
-        Task<ResponseViewModel> ReservationComplete(ReservationCompleteViewModel model);
+        Task<ResponseViewModel> NewReservation(ReservationViewModel model);
     }
 }

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ReservationManagementSystem.Core.Entities;
 
 namespace ReservationManagementSystem.Application.Repositories
 {
@@ -98,6 +99,26 @@ namespace ReservationManagementSystem.Application.Repositories
             {
                 _logger.LogError(ex.Message + " " + ex.StackTrace);
                 return null;
+            }
+        }
+
+        public async Task<User> GetUserById(int Id, string SqlConn)
+        {
+            try
+            {
+                string sql = $"Select UserId, FirstName, LastName, Username, Email, PasswordHash, PasswordSalt from Users where UserId = @UserId and IsVerified = 1";
+
+                using (IDbConnection con = new SqlConnection(SqlConn))
+                {
+                    var data = await con.QueryAsync<User>(sql, new { UserId = Id });
+
+                    return data.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                return new User();
             }
         }
     }

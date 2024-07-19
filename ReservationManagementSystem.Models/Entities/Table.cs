@@ -13,6 +13,7 @@ namespace ReservationManagementSystem.Core.Entities
         public int TableQuantity { get; set; }
         public bool IsActive { get; set; }
         public int RestuarantId { get; set; }
+        public int PartySize { get; set; }
         public virtual Restuarant Restuarant { get; set; }
         public virtual List<Reservation> Reservation { get; set; }
     }

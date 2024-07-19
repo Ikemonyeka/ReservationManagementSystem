@@ -11,5 +11,6 @@ namespace ReservationManagementSystem.Application.Repositories.Interface
     public interface IReservationTimeRepository
     {
         Task<ResponseViewModel> CreateTimeSlot(ReservationTimeSlot reservationTime);
+        Task<TimeByIdViewModel> GetTimeSlotById(int Id, string SqlConn);
     }
 }

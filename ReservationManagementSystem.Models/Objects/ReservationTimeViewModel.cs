@@ -18,4 +18,11 @@ namespace ReservationManagementSystem.Core.Objects
         public string Time { get; set; }
         public string Duration { get; set; }
     }
+
+    public class TimeByIdViewModel
+    {
+        public int Id { get; set; }
+        public TimeOnly Time { get; set; }
+        public TimeOnly Duration { get; set; }
+    }
 }

@@ -1,4 +1,6 @@
 ﻿using Azure;
+using Dapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Logging;
@@ -8,6 +10,7 @@ using ReservationManagementSystem.Core.Objects;
 using ReservationManagementSystem.Services.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +40,30 @@ namespace ReservationManagementSystem.Application.Repositories
             {
                 _logger.LogError(ex.Message + " " + ex.StackTrace);
                 return new ResponseViewModel();
+            }
+        }
+
+        public async Task<TimeByIdViewModel> GetTimeSlotById(int Id, string SqlConn)
+        {
+            try
+            {
+                string sql = $"Select Id, TimeSlot, Duration from ReservationTimeSlots where Id = @Id";
+
+                using (IDbConnection con = new SqlConnection(SqlConn))
+                {
+                    var data = await con.QueryAsync<dynamic>(sql, new { Id = Id });
+
+                    var response = data.FirstOrDefault();
+                    if (response is null)
+                        return new TimeByIdViewModel();
+
+                    return new TimeByIdViewModel { Id = response.Id, Time = TimeOnly.FromTimeSpan(response.TimeSlot), Duration = TimeOnly.FromTimeSpan(response.Duration) };
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                return new TimeByIdViewModel();
             }
         }
     }

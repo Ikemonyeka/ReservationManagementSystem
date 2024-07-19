@@ -13,5 +13,6 @@ namespace ReservationManagementSystem.Application.Repositories.Interface
         Task CreateUser(SignUpViewModel signUp);
         Task<object> VerifyEmail(string email, string token);
         Task<User> GetUserByEmail(SignInViewModel signIn, string SqlConn);
+        Task<User> GetUserById(int Id, string SqlConn);
     }
 }

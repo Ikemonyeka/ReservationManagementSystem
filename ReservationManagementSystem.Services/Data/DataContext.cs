@@ -21,5 +21,6 @@ namespace ReservationManagementSystem.Services.Data
         public DbSet<Restuarant> Restuarants { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<ReservationTimeSlot> ReservationTimeSlots { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

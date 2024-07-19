@@ -66,6 +66,8 @@ builder.Services.AddScoped<ITableRepository, TableRepository>();
 builder.Services.AddScoped<IReservationTimeService, ReservationTimeService>();
 builder.Services.AddScoped<IReservationTimeRepository, ReservationTimeRepository>();
 builder.Services.AddScoped<IRestuarantRepository, RestuarantRepository>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 
 builder.Services.AddHttpContextAccessor();
 

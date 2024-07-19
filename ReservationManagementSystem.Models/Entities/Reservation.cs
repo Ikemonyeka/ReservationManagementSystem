@@ -17,6 +17,7 @@ namespace ReservationManagementSystem.Core.Entities
         public DateTime ReservationDate { get; set; }
         public TimeOnly StartTime { get; set; }
         public TimeOnly EndTime { get; set; }
+        public int PartySize { get; set; }
         public string? SpecialRequest { get; set; }
     }
 }
