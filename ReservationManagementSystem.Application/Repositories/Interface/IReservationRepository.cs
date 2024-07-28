@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ReservationManagementSystem.Application.Repositories.Interface
 {
-    public interface ITableRepository
+    public interface IReservationRepository
     {
-        Task<ResponseViewModel> AddRestuarantTable(Table table);
-        Task<Table> GetTableById(int Id, string SqlConn);
+        Task<ResponseViewModel> NewReservation(Reservation reservation);
+        Task<List<Reservation>> GetReservationByTableId(int Id, DateTime ReservationDate, string SqlConn);
     }
 }

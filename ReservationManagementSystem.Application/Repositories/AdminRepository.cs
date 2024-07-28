@@ -110,5 +110,25 @@ namespace ReservationManagementSystem.Application.Repositories
                 return new ResponseViewModel();
             }
         }
+
+        public async Task<ResponseViewModel> DeleteAdmin(int adminId, string SqlConn)
+        {
+            try
+            {
+                string sql = $"delete from Admins where adminId = @adminId";
+
+                using (IDbConnection con = new SqlConnection(SqlConn))
+                {
+                    var data = await con.ExecuteAsync(sql, new { adminId = adminId });
+
+                    return new ResponseViewModel { message = "This admin has been deleted successfully", status = true, data = "no data available" };
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                return new ResponseViewModel();
+            }
+        }
     }
 }

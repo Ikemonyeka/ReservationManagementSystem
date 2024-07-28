@@ -12,5 +12,7 @@ namespace ReservationManagementSystem.Application.Services.Interface
         Task<ResponseViewModel> SignUp(SignUpViewModel signUp);
         Task<ResponseViewModel> VerifyUser(string email, string token);
         Task<ResponseViewModel> SignIn(SignInViewModel signIn);
+        Task<ResponseViewModel> ForgotPasswordEmail(string email);
+        Task<ResponseViewModel> ChangeUserPassword(UpdateForgottenPassword update);
     }
 }

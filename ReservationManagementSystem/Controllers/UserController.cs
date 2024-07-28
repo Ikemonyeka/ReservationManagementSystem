@@ -45,5 +45,23 @@ namespace ReservationManagementSystem.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost("ForgotPasswordEmail")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult> ForgotPasswordEmail(string email)
+        {
+            var response = await _userService.ForgotPasswordEmail(email);
+
+            return Ok(response);
+        }
+
+        [HttpPut("UpdatePassword")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult> UpdateUserPassword(UpdateForgottenPassword update)
+        {
+            var response = await _userService.ChangeUserPassword(update);
+
+            return Ok(response);
+        }
     }
 }

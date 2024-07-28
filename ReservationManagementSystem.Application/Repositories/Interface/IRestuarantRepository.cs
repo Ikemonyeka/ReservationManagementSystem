@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace ReservationManagementSystem.Application.Repositories.Interface
 {
-    public interface ITableRepository
+    public interface IRestuarantRepository
     {
-        Task<ResponseViewModel> AddRestuarantTable(Table table);
-        Task<Table> GetTableById(int Id, string SqlConn);
+        Task<Restuarant> GetRestuarantById(int Id, string SqlConn);
     }
 }

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            color: #777777;
+            font-size: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Reservation Successful</h1>
+        </div>
+        <div class="content">
+            <p>Dear {CustomerName},</p>
+            <p>We are pleased to confirm your reservation at {RestaurantName}. Here are the details:</p>
+            <table>
+                <tr>
+                    <td><strong>Date:</strong></td>
+                    <td>{Date}</td>
+                </tr>
+                <tr>
+                    <td><strong>Time:</strong></td>
+                    <td>{StartTime} - {EndTime}</td>
+                </tr>
+                <tr>
+                    <td><strong>Table:</strong></td>
+                    <td>{TableName}</td>
+                </tr>
+                <tr>
+                    <td><strong>Number of People:</strong></td>
+                    <td>{NumberOfPeople}</td>
+                </tr>
+                <tr>
+                    <td><strong>Special Requests:</strong></td>
+                    <td>{SpecialRequests}</td>
+                </tr>
+            </table>
+            <p>We look forward to serving you!</p>
+            <p>Best regards,</p>
+            <p>{RestaurantName}</p>
+            <a href="#" class="button">Visit Our Website</a>
+        </div>
+        <div class="footer">
+            <p>&copy; All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

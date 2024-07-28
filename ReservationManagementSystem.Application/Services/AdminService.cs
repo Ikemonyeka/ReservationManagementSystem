@@ -334,5 +334,31 @@ namespace ReservationManagementSystem.Application.Services
                 return response;
             }
         }
+
+        public async Task<ResponseViewModel> DeleteAdmin(int id)
+        {
+            try
+            {
+                if (id is 0)
+                    return new ResponseViewModel { message = "No admin was found with that id", status = false, data = "no data available" };
+
+                int role = Convert.ToInt32( _httpContextAccessor.HttpContext.User?.FindFirst(ClaimTypes.Role)?.Value ); 
+                
+                if(role is not (int)Roles.SuperAdmin || role is not (int)Roles.PrimaryAdmin)
+                    return new ResponseViewModel { message = "You do not have this permission", status = false, data = "no data available" };
+
+                var deletedResponse = await _adminRepository.DeleteAdmin(id, SqlConn);
+
+                if(deletedResponse is null)
+                    return new ResponseViewModel { message = "Could not delete admin right now, please try again later", status = false, data = "no data available" };
+
+                return new ResponseViewModel { message = "Admin deleted", status = true, data = "no data available" };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                return new ResponseViewModel { message = "An error occured", status = false, data = "no data available" };
+            }
+        }
     }
 }
