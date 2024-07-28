@@ -12,5 +12,6 @@ namespace ReservationManagementSystem.Application.Services.Interface
         Task<ResponseViewModel> CreateAdmin(AdminViewModel admin);
         Task<ResponseViewModel> LoginAdmin(AdminLoginViewModel adminLogin);
         Task<ResponseViewModel> VerifyAdmin(string email, string token);
+        Task<ResponseViewModel> DeleteAdmin(int id);
     }
 }

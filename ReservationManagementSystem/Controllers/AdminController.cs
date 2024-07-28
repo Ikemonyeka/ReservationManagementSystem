@@ -40,7 +40,14 @@ namespace ReservationManagementSystem.Api.Controllers
         public async Task<ActionResult> VerifySignUpUser(string Email, string UToken)
         {
             var response = await _adminService.VerifyAdmin(Email, UToken);
+            return Ok(response);
+        }
 
+        [HttpDelete("DeleteAdmin")]
+        [ProducesResponseType(200), Authorize]
+        public async Task<ActionResult> DeleteAdmin(int adminId)
+        {
+            var response = _adminService.DeleteAdmin(adminId);
             return Ok(response);
         }
     }

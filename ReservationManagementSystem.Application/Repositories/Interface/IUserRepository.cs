@@ -12,7 +12,9 @@ namespace ReservationManagementSystem.Application.Repositories.Interface
     {
         Task CreateUser(SignUpViewModel signUp);
         Task<object> VerifyEmail(string email, string token);
-        Task<User> GetUserByEmail(SignInViewModel signIn, string SqlConn);
+        Task<User> GetUserByEmail(string email, string SqlConn);
         Task<User> GetUserById(int Id, string SqlConn);
+        Task<ResponseViewModel> ForgotPasswordToken(ForgotPasswordEmailViewModel forgotPassword, string SqlConn);
+        Task<ResponseViewModel> UpdateUserPassword(HashForgottenPassword hash, string SqlConn);
     }
 }

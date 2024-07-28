@@ -14,5 +14,6 @@ namespace ReservationManagementSystem.Application.Repositories.Interface
         Task<ResponseViewModel> CreateAdmin(Admin admin);
         Task<Admin> GetAdminByUsername(string username, string SqlConn);
         Task<ResponseViewModel> VerifyAdminEmail(string email, string SqlConn);
+        Task<ResponseViewModel> DeleteAdmin(int adminId, string SqlConn);
     }
 }
