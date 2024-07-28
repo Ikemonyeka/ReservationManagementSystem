@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReservationManagementSystem.Services.Data;
 
@@ -11,9 +12,11 @@ using ReservationManagementSystem.Services.Data;
 namespace ReservationManagementSystem.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240710081021_Adminupdate2")]
+    partial class Adminupdate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace ReservationManagementSystem.Services.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestuarantId")
+                    b.Property<int>("RestuarantId")
                         .HasColumnType("int");
 
                     b.Property<int>("Role")
@@ -79,8 +82,7 @@ namespace ReservationManagementSystem.Services.Migrations
                     b.HasKey("AdminId");
 
                     b.HasIndex("RestuarantId")
-                        .IsUnique()
-                        .HasFilter("[RestuarantId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Admins");
                 });
@@ -166,34 +168,6 @@ namespace ReservationManagementSystem.Services.Migrations
                     b.ToTable("Restuarants");
                 });
 
-            modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Table", b =>
-                {
-                    b.Property<int>("TableId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableId"));
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("RestuarantId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TableQuantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("TableId");
-
-                    b.HasIndex("RestuarantId");
-
-                    b.ToTable("Tables");
-                });
-
             modelBuilder.Entity("ReservationManagementSystem.Models.Entities.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -256,7 +230,9 @@ namespace ReservationManagementSystem.Services.Migrations
                 {
                     b.HasOne("ReservationManagementSystem.Core.Entities.Restuarant", "Restuarant")
                         .WithOne("Admin")
-                        .HasForeignKey("ReservationManagementSystem.Core.Entities.Admin", "RestuarantId");
+                        .HasForeignKey("ReservationManagementSystem.Core.Entities.Admin", "RestuarantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Restuarant");
                 });
@@ -272,25 +248,12 @@ namespace ReservationManagementSystem.Services.Migrations
                     b.Navigation("Restuarant");
                 });
 
-            modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Table", b =>
-                {
-                    b.HasOne("ReservationManagementSystem.Core.Entities.Restuarant", "Restuarant")
-                        .WithMany("Tables")
-                        .HasForeignKey("RestuarantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Restuarant");
-                });
-
             modelBuilder.Entity("ReservationManagementSystem.Core.Entities.Restuarant", b =>
                 {
                     b.Navigation("Admin")
                         .IsRequired();
 
                     b.Navigation("ReservationAvailabilities");
-
-                    b.Navigation("Tables");
                 });
 #pragma warning restore 612, 618
         }
